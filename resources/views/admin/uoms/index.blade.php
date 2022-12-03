@@ -41,7 +41,7 @@
                       <div class="form-group"> 
                         <label>   بحث بالنوع </label>
                         <select name="is_master_search" id="is_master_search" class="form-control">
-                         <option value="">بحث بالكل </option>
+                         <option value="all">بحث بالكل </option>
                         <option  value="1"> وحدة اب</option>
                          <option  value="0"> تجزئة</option>
                       
@@ -50,7 +50,8 @@
             
                         </div>
                       </div>
-                    </div>
+                      <div class="clearfix"></div>
+                      <div class="col-md-12">
      
         <div id="ajax_responce_serarchDiv">
           
@@ -146,7 +147,7 @@
                  @endif
 
         </div>
-      
+          </div>
       
       
       </div>

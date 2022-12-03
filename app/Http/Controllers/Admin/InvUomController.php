@@ -152,7 +152,51 @@ class InvUomController extends Controller
             $com_code=auth()->user()->com_code;
             if($request->ajax()){
             $search_by_text=$request->search_by_text;
-            $data=Inv_uom::where('name','LIKE',"%{$search_by_text}%")->where('com_code', '=', $com_code)->paginate(PAGINATION_COUNT);
+            $is_master_search=$request->is_master_search;
+
+            if( $search_by_text==''){
+                $field2="id";
+                $operator2 = ">";
+                $value2 = 0;
+             
+
+            }else{
+                $field2="name";
+                $operator2 = "LIKE";
+                $value2= "%{$search_by_text}%";
+
+            }
+
+
+
+            if( $is_master_search=='all'){
+                $field1="id";
+                $operator1 = ">";
+                $value1 = 0;
+             
+
+            }else{
+                $field1="is_master";
+                $operator1 = "=";
+                $value1 = $is_master_search;
+
+            }
+
+            
+            $data=Inv_uom::where( $field2,$operator2,$value2)->where($field1,$operator1,$value1)->where('com_code', '=', $com_code)->paginate(PAGINATION_COUNT);
+            if(!empty($data)){
+            
+                foreach($data as $info){
+                    
+                   $info->added_by_admin=Admin::where('id',$info->added_by)->value('name');
+    
+    
+                    if($info->updated_by> 0 and $info->updated_by !=null){
+                       $info->updated_by_admin=Admin::where('id',$info->updated_by)->value('name');
+                    }
+                
+                }
+            }
             return view('admin.uoms.ajax_search',['data'=>$data]);
             }
             }
