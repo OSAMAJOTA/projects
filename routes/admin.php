@@ -93,6 +93,7 @@ Route::post('/uoms/ajax_search', [InvUomController::class, 'ajax_search'])->name
 /*    START inv_itemcard_cataegories*/
 
     Route::resource('/inv_itemcard_cataegories',Inv_itemcard_cataegories::class);
+    Route::get('/inv_itemcard_cataegories/delete/{id}', [Inv_itemcard_cataegories::class, 'delete'])->name('admin.inv_itemcard_cataegories.delete');
 
 
 

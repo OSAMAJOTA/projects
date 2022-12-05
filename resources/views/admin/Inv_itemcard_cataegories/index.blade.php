@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-الضبط العام
+فئات الاصناف
 @endsection
 
 @section('contentheader')
@@ -23,11 +23,11 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title card_title_center">بيانات  فئات الفواتير</h3>
+          <h3 class="card-title card_title_center">بيانات  فئات الاصناف</h3>
           <input type="hidden" id="token_search" value="{{csrf_token() }}">
           <input type="hidden" id="ajax_search_url" value="{{ route('admin.treasuries.ajax_search') }}">
         
-          <a href="{{ route('admin.sales_matrial_types.create') }}" class="btn btn-sm btn-success" >اضافة جديد</a>
+          <a href="{{ route('inv_itemcard_cataegories.create') }}" class="btn btn-sm btn-success" >اضافة جديد</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -96,8 +96,8 @@
          <td>
 
 
-        <a href="{{ route('admin.sales_matrial_types.edit',$info->id) }}" class="btn btn-sm  btn-primary">تعديل</a>   
-        <a href="{{ route('admin.sales_matrial_types.delete',$info->id) }}" class="btn btn-sm are_you_shue btn-danger">حزف</a> 
+        <a href="{{ route('inv_itemcard_cataegories.edit',$info->id) }}" class="btn btn-sm  btn-primary">تعديل</a>   
+        <a href="{{ route('admin.inv_itemcard_cataegories.delete',$info->id) }}" class="btn btn-sm are_you_shue btn-danger">حزف</a> 
    
          </td>
            

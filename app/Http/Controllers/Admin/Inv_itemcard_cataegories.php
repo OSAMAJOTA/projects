@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\itemcard_cataegories;
+use App\Http\Requests\Inv_itemcard_cataegoriesRequest;
 use App\Models\Admin;
 
 class Inv_itemcard_cataegories extends Controller
@@ -49,7 +50,7 @@ class Inv_itemcard_cataegories extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.Inv_itemcard_cataegories.create');
     }
 
     /**
@@ -58,9 +59,37 @@ class Inv_itemcard_cataegories extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Inv_itemcard_cataegoriesRequest $request)
+    
     {
-        //
+        try{
+            $com_code=auth()->user()->com_code;
+            //check if not exsits
+            $checkExists=itemcard_cataegories::where(['name'=>$request->name,'com_code'=>$com_code])->first();
+            if($checkExists==null){
+        
+            $data['name']=$request->name;
+            $data['active']=$request->active;
+           
+            $data['created_at']=date("Y-m-d H:i:s");
+            $data['added_by']=auth()->user()->id;
+            $data['com_code']=$com_code;
+            $data['date']=date("Y-m-d");
+            itemcard_cataegories::create($data);
+            return redirect()->route('inv_itemcard_cataegories.index')->with(['success'=>'لقد تم اضافة البيانات بنجاح']);
+            }else{
+                return redirect()->back()
+            ->with(['error'=>'عفوا اسم الفئة مسجل من قبل '])
+            ->withInput(); }
+    
+            
+            }
+           
+           catch(\Exception $ex)
+           {
+            return redirect()->route('admin.uoms.index')->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()]);
+    
+           }
     }
 
     /**
@@ -82,7 +111,9 @@ class Inv_itemcard_cataegories extends Controller
      */
     public function edit($id)
     {
-        //
+     
+        $data=itemcard_cataegories::select()->find($id);
+        return view('admin.Inv_itemcard_cataegories.edit',['data'=>$data]);
     }
 
     /**
@@ -92,9 +123,43 @@ class Inv_itemcard_cataegories extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( $id,Inv_itemcard_cataegoriesRequest $request)
     {
-        //
+       
+
+        try{
+
+            $com_code=auth()->user()->com_code;
+            
+            $data=itemcard_cataegories::select()->find($id);
+            if(empty($data)){
+                return redirect()->route('inv_itemcard_cataegories.index')->with(['error' => 'عفوا   غير قادر علي الوصول للبيانات المطلوبة' ]);
+
+            }
+            $checkExists=itemcard_cataegories::where(['name'=>$request->name,'com_code'=>$com_code])->where('id','!=',$id)->first();
+
+            if($checkExists !=null){
+                return redirect()->back()
+
+                ->with(['error' => 'عفوا اسم الفئة مسجل من قبل ' ])
+                ->withInput(); }
+
+    $data_to_update['name']=$request->name;
+    $data_to_update['active']=$request->active;
+  
+
+    $data_to_update['updated_by']=auth()->user()->id;
+    $data_to_update['updated_at']=date("Y-m-d H:i:s");
+    itemcard_cataegories::where(['id'=>$id,'com_code'=>$com_code])->update($data_to_update);
+    return redirect()->route('inv_itemcard_cataegories.index')->with(['success' => ' لقد تم تحديث البيانات بنجاح ' ]);
+
+
+        }
+        catch(\Exception $ex)
+        {
+         return redirect()->route('inv_itemcard_cataegories.create')->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()]);
+ 
+        }
     }
 
     /**
@@ -103,8 +168,26 @@ class Inv_itemcard_cataegories extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        try{
+            $itemcard_cataegories_row=itemcard_cataegories::find($id);
+            if(!empty($itemcard_cataegories_row)){
+            $flag=$itemcard_cataegories_row->delete();
+            if($flag){
+            return redirect()->back()
+            ->with(['success'=>'تم حذف البيانات بنجاح']);
+            }else{
+            return redirect()->back()
+            ->with(['error'=>'عفوا حدث خطأ ما']);
+            }
+            }else{
+            return redirect()->back()
+            ->with(['error'=>'عفوا غير قادر الي الوصول للبيانات المطلوبة']);
+            }
+            }catch(\Exception $ex){
+            return redirect()->back()
+            ->with(['error'=>'عفوا حدث خطأ ما'.$ex->getMessage()]);
+            }
     }
 }

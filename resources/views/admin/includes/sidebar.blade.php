@@ -67,7 +67,17 @@
             <a href="{{ route('admin.uoms.index') }}" class="nav-link fas fa-th-large">
               
               <p>
-                بيانات  الوحدات 
+               بيانات الوحدات
+                
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="{{ route('inv_itemcard_cataegories.index') }}" class="nav-link fas fa-th-large">
+              
+              <p>
+                فئات   الاصناف 
                 
               </p>
             </a>
@@ -150,6 +160,21 @@
               <i class="ion ion-bag"></i>
             </div>
            
+          </div>
+          <div class="small-box bg-success">
+            <div class="inner">
+            
+              <a href="{{ route('inv_itemcard_cataegories.index') }}" class="nav-link fas fa-th-large">
+              
+                <p>
+                  فئات   الاصناف 
+                  
+                </p>
+              </a>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
           </div>
 
         </ul>

@@ -4,11 +4,11 @@
 @endsection
 
 @section('contentheader')
-فئات الفواتير
+فئات الاصناف
 @endsection
 
 @section('contentheaderlink')
-<a href="{{ route('admin.sales_matrial_types.index') }}"> فئات الفواتير </a>
+<a href="{{ route('inv_itemcard_cataegories.index') }}"> فئات الفواتير </a>
 @endsection
 
 @section('contentheaderactive')
@@ -28,12 +28,12 @@
         <!-- /.card-header -->
         <div class="card-body">
     
-      <form action="{{ route('admin.sales_matrial_types.store') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ route('inv_itemcard_cataegories.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         
       <div class="form-group">
-<label>اسم فئة الفواتير</label>
-<input name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="ادخل اسم الشركة" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+<label>اسم فئة الصنف </label>
+<input name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="ادخل اسم الفئة" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
 @error('name')
 <span class="text-danger">{{ $message }}</span>
 @enderror
@@ -58,7 +58,7 @@
 
       <div class="form-group text-center">
         <button type="submit" class="btn btn-primary btn-sm"> اضافة</button>
-        <a href="{{ route('admin.sales_matrial_types.index') }}" class="btn btn-sm btn-danger">الغاء</a>    
+        <a href="{{ route('inv_itemcard_cataegories.index') }}" class="btn btn-sm btn-danger">الغاء</a>    
       
       </div>
         
