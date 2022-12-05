@@ -24,12 +24,14 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">بيانات الضبط العام</h3>
+     
+            <h3 class="card-title card_title_center  ">بيانات الضبط العام</h3>
+          
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             @if (@isset($data) && !@empty($data))
-            <table id="example2" class="table table-bordered table-hover">
+            <table id="example2" class="table table-bordered  table-hover">
                
                 <tr>
                     <td class="width30"> اسم الشركة</td>
@@ -92,7 +94,9 @@
                             @endif
                             <br>
 
-                            <a href="{{ route('admin.adminPanelSetting.edit') }}" class="btn btn-sm btn-success">تعديل</a>
+                            <br>
+                            <br>
+                            <a href="{{ route('admin.adminPanelSetting.edit') }}" class="btn btn-sm nav-icon fas fa-edit btn-success">تعديل</a>
                               </center> 
                         </tr>
 
