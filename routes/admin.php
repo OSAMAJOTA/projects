@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TreasuriesController;
 use App\Http\Controllers\Admin\StoresContrroller;
 use App\Http\Controllers\Admin\InvUomController;
+use App\Http\Controllers\Admin\Inv_itemcard_cataegories;
+
 
 
 use App\Http\Controllers\Admin\Sales_matrial_typesController;
@@ -24,7 +26,7 @@ use App\Http\Controllers\Admin\admin_panel_settingsController;
 |
 */
 define('PAGINATION_COUNT',5);
-Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth:admin'],function () {
+Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function () {
 Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
 Route::get('logout',[LoginController::class,'logout'])->name('admin.logout');
 
@@ -85,22 +87,17 @@ Route::get('/uoms/edit/{id}', [InvUomController::class, 'edit'])->name('admin.uo
 Route::post('/uoms/update/{id}', [InvUomController::class, 'update'])->name('admin.uoms.update');
 Route::get('/uoms/delete/{id}', [InvUomController::class, 'delete'])->name('admin.uoms.delete');
 Route::post('/uoms/ajax_search', [InvUomController::class, 'ajax_search'])->name('admin.uoms.ajax_search');
-Route::post('/uoms/ajax_search', [InvUomController::class, 'ajax_search'])->name('admin.uoms.ajax_search');
-
-
-
-
-
 
 /*      end Uoms   الوحدات  */
 
+/*    START inv_itemcard_cataegories*/
+
+    Route::resource('/inv_itemcard_cataegories',Inv_itemcard_cataegories::class);
 
 
 
-
-
-
-
+/*      end inv_itemcard_cataegories
+   */
 
 
 
