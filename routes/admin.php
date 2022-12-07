@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TreasuriesController;
 use App\Http\Controllers\Admin\StoresContrroller;
 use App\Http\Controllers\Admin\InvUomController;
+use App\Http\Controllers\Admin\InvItemCardController;
+
 use App\Http\Controllers\Admin\Inv_itemcard_cataegories;
 
 
@@ -97,8 +99,19 @@ Route::post('/uoms/ajax_search', [InvUomController::class, 'ajax_search'])->name
 
 
 
-/*      end inv_itemcard_cataegories
-   */
+/*      end inv_itemcard_cataegories*/
+
+
+/*  start item_card   */
+Route::get('/inv_itemCard/index', [InvItemCardController::class, 'index'])->name('admin.inv_itemCard.index');
+Route::get('/inv_itemCard/create', [InvItemCardController::class, 'create'])->name('admin.inv_itemCard.create');
+Route::post('/inv_itemCard/store', [InvItemCardController::class, 'store'])->name('admin.inv_itemCard.store');
+Route::get('/inv_itemCard/edit/{id}', [InvItemCardController::class, 'edit'])->name('admin.inv_itemCard.edit');
+Route::post('/inv_itemCard/update/{id}', [InvItemCardController::class, 'update'])->name('admin.inv_itemCard.update');
+Route::get('/inv_itemCard/delete/{id}', [InvItemCardController::class, 'delete'])->name('admin.inv_itemCard.delete');
+Route::post('/inv_itemCard/ajax_search', [InvItemCardController::class, 'ajax_search'])->name('admin.inv_itemCard.ajax_search');
+
+/*      end item_card     */
 
 
 

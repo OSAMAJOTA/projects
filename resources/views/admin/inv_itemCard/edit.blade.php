@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 @section('title')
-تعديل بيانات فئة الاصناف
+تعديل بيانات فئة فواتير
 
 @endsection
 
 @section('contentheader')
-فئات الاصناف
+فئات الفواتير
 @endsection
 
 @section('contentheaderlink')
-<a href="{{ route('inv_itemcard_cataegories.index') }}"> فئات الاصناف </a>
+<a href="{{ route('admin.sales_matrial_types.index') }}"> فئات الفواتير </a>
 @endsection
 
 @section('contentheaderactive')
@@ -24,24 +24,36 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title card_title_center">تعديل بيانات  فئة الاصناف</h3>
+          <h3 class="card-title card_title_center">تعديل بيانات  فئة فواتير</h3>
         
         </div>
         <!-- /.card-header -->
         <div class="card-body">
         @if (@isset($data) && !@empty($data))
-      <form action="{{ route('inv_itemcard_cataegories.update',$data['id']) }}" method="post" >
-        @method('PUT')
-        
+      <form action="{{ route('admin.stores.update',$data['id']) }}" method="post" >
         @csrf
         
       <div class="form-group">
-        <label>اسم فئة الصنف</label>
+        <label>اسم المخزن</label>
         <input name="name" id="name" class="form-control" value="{{ old('name',$data['name']) }}"   >
         @error('name')
         <span class="text-danger">{{ $message }}</span>
         @enderror
         </div>
+        <div class="form-group">
+          <label>  رقم الهاتف</label>
+          <input name="phone" id="name" class="form-control" value="{{ old('phone',$data['phone']) }}"   >
+          @error('phone')
+          <span class="text-danger">{{ $message }}</span>
+          @enderror
+          </div>
+          <div class="form-group">
+            <label>  العنوان</label>
+            <input name="address" id="address" class="form-control" value="{{ old('address',$data['address']) }}"   >
+            @error('address')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+            </div>
         
         <div class="form-group"> 
           <label>  حالة التفعيل</label>
@@ -56,7 +68,7 @@
           </div>
       <div class="form-group text-center">
 <button type="submit" class="btn btn-primary btn-sm">حفظ التعديلات</button>
-<a href="{{ route('inv_itemcard_cataegories.index') }}" class="btn btn-sm btn-danger">الغاء</a>    
+<a href="{{ route('admin.sales_matrial_types.index') }}" class="btn btn-sm btn-danger">الغاء</a>    
 
       </div>
 
