@@ -82,6 +82,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.inv_itemCard.index') }}" class="nav-link fas fa-th-large">
+              
+              <p>
+                   الاصناف 
+                
+              </p>
+            </a>
+          </li>
           <div class="small-box bg-info">
             <div class="inner">
       
@@ -175,6 +184,22 @@
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
+          </div>
+          <div class="small-box bg-info">
+            <div class="inner">
+      
+              <a href="{{ route('admin.inv_itemCard.index') }}" class="nav-link fas fa-th-large">
+              
+                <p>
+                     الاصناف 
+                  
+                </p>
+              </a>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+           
           </div>
 
         </ul>

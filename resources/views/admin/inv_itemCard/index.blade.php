@@ -57,46 +57,16 @@
             <tr>
              <td>{{ $i }}</td>  
              <td>{{ $info->name }}</td>  
-             <td>{{ $info->phone }}</td>  
-             <td>{{ $info->address }}</td>  
+             <td>@if($info->item_type==1) مخزني @elseif($info->item_type==2)  استهلاكي بصلاحية @elseif($info->item_type==3)عهدة@else غير محدد @endif</td>  
+             <td>{{ $info->inv_itemcard_cataegories_name }}</td>  
+             <td>{{ $info->parent_item_name }}</td>  
+             <td>{{ $info->Uom_name }}</td> 
+             <td>{{ $info->retail_uom_name }}</td>  
+
              <td>@if($info->active==1) مفعل @else معطل @endif</td> 
-             <td > 
-     
-              @php
-             $dt=new DateTime($info->created_at);
-             $date=$dt->format("Y-m-d");
-             $time=$dt->format("h:i");
-             $newDateTime=date("A",strtotime($time));
-             $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
-              @endphp
-          {{ $date }} <br>
-          {{ $time }}
-          {{ $newDateTimeType }}  <br>
-          بواسطة 
-          {{ $info->added_by_admin}}
-          
-          
-                          </td>
+           
                           
-     <td > 
-  @if($info->updated_by>0 and $info->updated_by!=null )
-                         @php
-                        $dt=new DateTime($info->updated_at);
-                        $date=$dt->format("Y-m-d");
-                        $time=$dt->format("h:i");
-                        $newDateTime=date("A",strtotime($time));
-                        $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
-                         @endphp
-                     {{ $date }}  <br>
-                     {{ $time }}
-                     {{ $newDateTimeType }}  <br>
-                     بواسطة 
-                     {{ $data['updated_by_admin'] }}
-                          @else
-                     لايوجد تحديث
-                            @endif
-                     
-       </td>           
+         
 
              
          <td>
