@@ -17,7 +17,7 @@ class InvItemCardController extends Controller
         //ترتيب تصاعدي DESC
         $com_code=auth()->user()->com_code;
 
-        $data = get_cols_where(new Inv_itemCard(),array("*"),array("com_code"=>$com_code), 'id', 'DESC', PAGINATION_COUNT);
+        $data = get_cols_where_p(new Inv_itemCard(),array("*"),array("com_code"=>$com_code), 'id', 'DESC', PAGINATION_COUNT);
        
       
         if(!empty($data)){
@@ -44,7 +44,7 @@ class InvItemCardController extends Controller
 
     }
     public function create(){
-        return view('admin.stores.create');
+        return view('admin.inv_itemCard.create');
 
     }
 }

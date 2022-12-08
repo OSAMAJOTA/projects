@@ -10,14 +10,20 @@ function uploadImage($folder, $image)
   return $filename;
 }
 
-
-
-
-
-/*get some cols table */
-function get_cols_where($model, $columns_names = array(), $where = array(), $order_field,$order_type,$pagination_counter)
+/*get some cols by paginaion table */
+function get_cols_where($model, $columns_names = array(), $where = array(), $order_field,$order_type)
 {
-  $data = $model::select($columns_names)->orderby($order_field, $order_type)->paginate($pagination_counter);
+  $data = $model::select($columns_names)->where($where)->orderby($order_field, $order_type)->get();
+  return $data;
+}
+
+
+
+
+/*get some cols by paginaion table */
+function get_cols_where_p($model, $columns_names = array(), $where = array(), $order_field,$order_type,$pagination_counter)
+{
+  $data = $model::select($columns_names)->where($where)->orderby($order_field, $order_type)->paginate($pagination_counter);
   return $data;
 }
 

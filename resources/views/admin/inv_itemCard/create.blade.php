@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 @section('title')
-اضافة مخزن جديد
+الضبط المخازن
 @endsection
 
 @section('contentheader')
-المخازن
+الاصناف
 @endsection
 
 @section('contentheaderlink')
-<a href="{{ route('admin.sales_matrial_types.index') }}">  المخازن </a>
+<a href="{{ route('admin.inv_itemCard.index') }}">  الاصناف </a>
 @endsection
 
 @section('contentheaderactive')
