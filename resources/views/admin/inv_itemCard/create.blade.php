@@ -12,7 +12,7 @@
 @endsection
 
 @section('contentheaderactive')
-اضافة
+اضافه
 @endsection
 
 
@@ -23,23 +23,23 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title card_title_center">اضافة  مخزن جديد</h3>
+          <h3 class="card-title card_title_center">اضافة  صنف جديد</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
     
-      <form action="{{ route('admin.stores.store') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ route('admin.inv_itemCard.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         
       <div class="form-group">
-<label>اسم المخزن </label>
-<input name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="ادخل اسم المخزن" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
-@error('name')
+<label>باركود الصنف  </label>
+<input name="barcode" id="barcode" class="form-control" value="{{ old('barcode') }}" placeholder="  الباركود" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+@error('barcode')
 <span class="text-danger">{{ $message }}</span>
 @enderror
 </div>
 <div class="form-group">
-  <label>رقم الهاتف   </label>
+  <label> اسم الصنف   </label>
   <input name="phone" id="phone" class="form-control" value="{{ old('phone') }}" placeholder="ادخل  رقم الهاتف" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
   @error('phone')
   <span class="text-danger">{{ $message }}</span>
