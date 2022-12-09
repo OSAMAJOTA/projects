@@ -32,7 +32,7 @@
         @csrf
         
       <div class="form-group">
-<label>باركود الصنف  </label>
+<label>باركود الصنف -في حالة عدم الادخال سيولد بشكل الي </label>
 <input name="barcode" id="barcode" class="form-control" value="{{ old('barcode') }}" placeholder="  الباركود" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
 @error('barcode')
 <span class="text-danger">{{ $message }}</span>
@@ -40,15 +40,23 @@
 </div>
 <div class="form-group">
   <label> اسم الصنف   </label>
-  <input name="phone" id="phone" class="form-control" value="{{ old('phone') }}" placeholder="ادخل  رقم الهاتف" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
-  @error('phone')
+  <input name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="ادخل   اسم اصنف" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+  @error('name')
   <span class="text-danger">{{ $message }}</span>
   @enderror
   </div>
-  <div class="form-group">
-    <label> العنوان </label>
-    <input name="address" id="address" class="form-control" value="{{ old('name') }}" placeholder="ادخل عنوان المخزن " oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
-    @error('address')
+  <div class="form-group"> 
+    <label>   نوع الصنف</label>
+    <select name="item_type" id="item_type" class="form-control">
+     <option value="">اختر النوع</option>
+    <option   @if(old('item_type')==1) selected="selected"  @endif value="1"> مخزني</option>
+    <option   @if(old('item_type')==2) selected="selected"  @endif value="2"> استهلاكي</option>
+    <option   @if(old('item_type')==3) selected="selected"  @endif value="3"> عهدة</option>
+
+  
+    </select>
+  
+    @error('active')
     <span class="text-danger">{{ $message }}</span>
     @enderror
     </div>
