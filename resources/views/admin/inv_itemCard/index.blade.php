@@ -115,7 +115,7 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('assets/admin/js/treasuries.js') }}"></script>
+<script src="{{ asset('assets/admin/js/inv_itemcard.js') }}"></script>
 
 @endsection
 

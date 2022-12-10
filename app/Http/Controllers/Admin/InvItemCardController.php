@@ -44,7 +44,15 @@ class InvItemCardController extends Controller
 
     }
     public function create(){
-        return view('admin.inv_itemCard.create');
+        $com_code=auth()->user()->com_code;
+        $inv_itemcard_cataegories = get_cols_where(new itemcard_cataegories(),array('id','name'),array('com_code'=>$com_code,'active'=>1),'id','DESC');
+        $inv_uom_parent= get_cols_where(new inv_uom(),array('id','name'),array('com_code'=>$com_code,'active'=>1,'is_master'=>1),'id','DESC');
+        $inv_uom_child= get_cols_where(new inv_uom(),array('id','name'),array('com_code'=>$com_code,'active'=>1,'is_master'=>0),'id','DESC');
+
+
+
+
+        return view('admin.inv_itemCard.create',['inv_itemcard_cataegories'=>$inv_itemcard_cataegories,'inv_uom_parent'=>$inv_uom_parent,'inv_uom_child'=>$inv_uom_child]);
 
     }
 }
