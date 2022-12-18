@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('title')
 الضبط المخازن
+الاصناف 
 @endsection
 
 @section('contentheader')
