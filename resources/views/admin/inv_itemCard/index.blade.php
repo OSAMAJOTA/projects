@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('title')
-الضبط المخازن
 الاصناف 
 @endsection
 
