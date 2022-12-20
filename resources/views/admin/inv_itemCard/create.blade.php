@@ -149,6 +149,61 @@
     </div>
   </div>
 
+  <div class="col-md-6 relatied_parent_counter" style="display:none;">
+
+    <div class="form-group">
+      <label> السعر القطاعي بوحدة(<span class="parentuomname"></span>) </label>
+      <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="price" id="price" class="form-control"  value="{{ old('price') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+      @error('price')
+      <span class="text-danger">{{ $message }}</span>
+      @enderror
+      </div>
+    </div>
+    
+  <div class="col-md-6 relatied_parent_counter" style="display:none;">
+
+    <div class="form-group">
+      <label> السعر نص جملة بوحدة(<span class="parentuomname"></span>) </label>
+      <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="nos_gomla_price" id="nos_gomla_price" class="form-control"  value="{{ old('nos_gomla_price') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+      @error('nos_gomla_price')
+      <span class="text-danger">{{ $message }}</span>
+      @enderror
+      </div>
+    </div>
+    <div class="col-md-6 relatied_parent_counter" style="display:none;">
+
+      <div class="form-group">
+        <label> السعر  جملة بوحدة(<span class="parentuomname"></span>) </label>
+        <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="gomla_price" id="gomla_price" class="form-control"  value="{{ old('nos_gomla_price') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+        @error('gomla_price')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+        </div>
+      </div>
+      <div class="col-md-6 relatied_parent_counter" style="display:none;">
+
+        <div class="form-group">
+          <label> السعر  تكلفة شراء بوحدة(<span class="parentuomname"></span>) </label>
+          <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="cost_price" id="cost_price" class="form-control"  value="{{ old('nos_gomla_price') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+          @error('cost_price')
+          <span class="text-danger">{{ $message }}</span>
+          @enderror
+          </div>
+        </div>
+
+        <div class="col-md-6 relatied_retial_counter" style="display:none;">
+
+    <div class="form-group">
+      <label> السعر القطاعي بوحدة(<span class="chailduomname"></span>) </label>
+      <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="price_retail" id="price_retail" class="form-control"  value="{{ old('price_retail') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+      @error('price_retail')
+      <span class="text-danger">{{ $message }}</span>
+      @enderror
+      </div>
+    </div>
+
+
+
 
   <div class="col-md-6">
       <div class="form-group"> 

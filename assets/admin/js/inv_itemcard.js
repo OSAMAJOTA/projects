@@ -34,11 +34,35 @@ $(".relatied_retial_counter").show();
               }else{
               $(".relatied_retial_counter").hide();
               }
+             $(".relatied_parent_counter").show();
+
       }else{
         $(".parentuomname").text('');
         $(".relatied_retial_counter").hide();
+        $(".relatied_parent_counter").hide();
 
       }
 
       });
+
+
+      $(document).ready(function(){
+        $(document).on('change','#retail_uom_id',function(e){
+          if($(this).val()!=''){
+    
+    
+            var name=$("#retail_uom_id option:selected").text();
+            $(".chailduomname").text(name);
+            $(".relatied_retial_counter").show();
+         
+    
+          }else{
+            $(".chailduomname").text('');
+            $(".relatied_retial_counter").hide();
+          
+    
+          }
+    
+          });
+        });
     });
