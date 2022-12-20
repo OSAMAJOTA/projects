@@ -10,16 +10,25 @@ return false;
 
     }
     if($(this).val()==1){
-$(".relatied_retial_counter").show();
+$("#retail_uom_idDiv").show();
+var retail_uom_id=$("#retail_uom_id").val();
+if(retail_uom_id !=''){
+  $(".relatied_retial_counter").show();
+
+}else{
+  $(".relatied_retial_counter").hide();
+
+}
 
     }else{
     $(".relatied_retial_counter").hide();
+    $("#retail_uom_idDiv").hide();
     }
   });
   });
 
 
-  $(document).ready(function(){
+ 
     $(document).on('change','#uom_id',function(e){
       if($(this).val()!=''){
 
@@ -29,10 +38,21 @@ $(".relatied_retial_counter").show();
 
         var dose_has_retailunit=$("#dose_has_retailunit").val();
         if(dose_has_retailunit==1){
-          $(".relatied_retial_counter").show();
+          var retail_uom_id=$("#retail_uom_id").val();
+          if(retail_uom_id !=''){
+            $(".relatied_retial_counter").show();
+
+          }else{
+            $(".relatied_retial_counter").hide();
+
+          }
+
+         
+
           
               }else{
               $(".relatied_retial_counter").hide();
+              $("#retail_uom_idDiv").hide();
               }
              $(".relatied_parent_counter").show();
 
@@ -40,6 +60,7 @@ $(".relatied_retial_counter").show();
         $(".parentuomname").text('');
         $(".relatied_retial_counter").hide();
         $(".relatied_parent_counter").hide();
+        $("#retail_uom_idDiv").hide();
 
       }
 
@@ -65,4 +86,3 @@ $(".relatied_retial_counter").show();
     
           });
         });
-    });

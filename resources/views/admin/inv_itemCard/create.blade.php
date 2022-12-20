@@ -121,7 +121,7 @@
           @enderror
           </div>
         </div>
-        <div class="col-md-6 relatied_retial_counter" style="display:none;">
+        <div class="col-md-6 " style="display:none;" id="retail_uom_idDiv">
           <div class="form-group"> 
             <label>    وحدة قياس التجزئة الابن بالنسبة (<span class="parentuomname"></span>)</label>
             <select name="retail_uom_id" id="retail_uom_id" class="form-control ">
@@ -141,7 +141,7 @@
           <div class="col-md-6 relatied_retial_counter" style="display:none;">
 
   <div class="form-group">
-    <label>   عدد وحدات التجزئة بالنسبة للاب (<span class="parentuomname"></span>) </label>
+    <label>   عدد وحدات التجزئة (<span class="chailduomname"></span>)  بالنسبة للاب (<span class="parentuomname"></span>) </label>
     <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="retail_uom_quntToParent" id="retail_uom_quntToParent" class="form-control"  value="{{ old('retail_uom_quntToParent') }}" placeholder="ادخل  اخر رقم ايصال صرف" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
     @error('retail_uom_quntToParent')
     <span class="text-danger">{{ $message }}</span>
@@ -201,9 +201,55 @@
       @enderror
       </div>
     </div>
+    <div class="col-md-6 relatied_retial_counter" style="display:none;">
+
+      <div class="form-group">
+        <label> السعر النص جملة بوحدة(<span class="chailduomname"></span>) </label>
+        <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="nos_gomla_price_retail" id="nos_gomla_price_retail" class="form-control"  value="{{ old('nos_gomla_price_retail') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+        @error('nos_gomla_price_retail')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+        </div>
+      </div>
+      <div class="col-md-6 relatied_retial_counter" style="display:none;">
+
+        <div class="form-group">
+          <label> السعر الجملة بوحدة(<span class="chailduomname"></span>) </label>
+          <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="nos_gomla_retail" id="nos_gomla_retail" class="form-control"  value="{{ old('nos_gomla_retail') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+          @error('nos_gomla_retail')
+          <span class="text-danger">{{ $message }}</span>
+          @enderror
+          </div>
+        </div>
+
+        <div class="col-md-6 relatied_retial_counter" style="display:none;">
+
+          <div class="form-group">
+            <label> السعر الشراء بوحدة(<span class="chailduomname"></span>) </label>
+            <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="cost_price_retail" id="cost_price_retail" class="form-control"  value="{{ old('cost_price_retail') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+            @error('cost_price_retail')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+            </div>
+          </div>
 
 
-
+          <div class="col-md-6">
+            <div class="form-group"> 
+              <label>   هل للصنف سعر ثابت</label>
+              <select name="has_fixed_price" id="has_fixed_price" class="form-control">
+               <option value="">اختر الحالة</option>
+              <option   @if(old('has_fixed_price')==1) selected="selected"  @endif value="1">نعم ثابت ولا يتغير بالفواتير</option>
+               <option @if(old('has_fixed_price')==0 and old('has_fixed_price')!="" ) selected="selected"   @endif value="0">  لا غير ثابت ويتغير بالفواتير</option>
+            
+            
+              </select>
+            
+              @error('has_fixed_price')
+              <span class="text-danger">{{ $message }}</span>
+              @enderror
+              </div>
+            </div>
 
   <div class="col-md-6">
       <div class="form-group"> 
