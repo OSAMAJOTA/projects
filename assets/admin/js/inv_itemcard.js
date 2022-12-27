@@ -85,4 +85,64 @@ if(retail_uom_id !=''){
           }
     
           });
+
+          $(document).on('click','#do_add_item_card',function(e){
+      var name=$('#name').val();
+      if(name==""){
+        alert("من فضلك ادخل اسم ");
+        return false;
+      }
+      var item_type=$('#item_type').val();
+      if(item_type==""){
+        alert("من فضلك ادخل نوع الصنف ");
+        return false;
+      }
+      var inv_itemcard_cataegories_id=$('#inv_itemcard_cataegories_id').val();
+      if(inv_itemcard_cataegories_id==""){
+        alert("من فضلك اختار فئة الصنف ");
+        return false;
+      }
+      var uom_id=$('#uom_id').val();
+      if(uom_id==""){
+        alert("من فضلك اختار وحدة القياس الاب للصنف ");
+        return false;
+      }
+      var dose_has_retailunit=$('#dose_has_retailunit').val();
+      if(dose_has_retailunit==""){
+        alert("من فضلك اختار حالة هل للصنف وحدة تجزئة    ");
+        return false;
+      }
+      if(dose_has_retailunit==1){
+
+        var retail_uom_id=$('#retail_uom_id').val();
+      if(retail_uom_id==""){
+        alert("من فضلك اختار حالة   وحدة قياس التجزئة الابن للصنف    ");
+        return false;
+      }
+
+      var retail_uom_quntToParent=$('#retail_uom_quntToParent').val();
+      if(retail_uom_quntToParent=="" || retail_uom_quntToParent==0){
+        alert("من فضلك ادخل عدد وحدات الوحدة التجزئة بالنسبة للاب     ");
+        return false;
+      }
+
+        
+      }
+      var price=$('#price').val();
+      if(price==""){
+        alert("من فضلك ادخل سعر  القطاعي للصنف     ");
+        return false;
+      }
+
+      var nos_gomla_price=$('#nos_gomla_price').val();
+      if(nos_gomla_price==""){
+        alert(" من فضلك ادخل سعر النص جملة للصنف     ");
+        return false;
+      }
+     
+
+
+          });
+
+
         });

@@ -46,7 +46,7 @@
 <div class="col-md-6">
 <div class="form-group">
   <label> اسم الصنف   </label>
-  <input name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="ادخل   اسم اصنف" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+  <input name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="ادخل   اسم اصنف"  oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
   @error('name')
   <span class="text-danger">{{ $message }}</span>
   @enderror
@@ -64,7 +64,7 @@
   
     </select>
   
-    @error('active')
+    @error('item_type')
     <span class="text-danger">{{ $message }}</span>
     @enderror
     </div>
@@ -282,10 +282,10 @@
         </div>
       <div class="col-md-12">
       <div class="form-group text-center">
-        <button type="submit" class="btn btn-primary btn-sm"> اضافة</button>
+        <button type="submit" id="do_add_item_card" class="btn btn-primary btn-sm"> اضافة</button>
         <a href="{{ route('admin.stores.index') }}" class="btn btn-sm btn-danger">الغاء</a>    
       
-      </div>
+      </div> 
     </div>
     
   </div> 
