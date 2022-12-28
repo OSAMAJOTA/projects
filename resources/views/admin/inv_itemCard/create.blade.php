@@ -116,12 +116,12 @@
         
           </select>
         
-          @error('active')
+          @error('dose_has_retailunit')
           <span class="text-danger">{{ $message }}</span>
           @enderror
           </div>
         </div>
-        <div class="col-md-6 " style="display:none;" id="retail_uom_idDiv">
+        <div class="col-md-6 "  @if(old('dose_has_retailunit')!=1)style="display:none; @else  style="display:none; @endif  style="display:fixed;" id="retail_uom_idDiv">
           <div class="form-group"> 
             <label>    وحدة قياس التجزئة الابن بالنسبة (<span class="parentuomname"></span>)</label>
             <select name="retail_uom_id" id="retail_uom_id" class="form-control ">
@@ -282,7 +282,7 @@
         </div>
       <div class="col-md-12">
       <div class="form-group text-center">
-        <button type="submit" id="do_add_item_card" class="btn btn-primary btn-sm"> اضافة</button>
+        <button type="submit" id="do_add_item_cardd" class="btn btn-primary btn-sm"> اضافة</button>
         <a href="{{ route('admin.stores.index') }}" class="btn btn-sm btn-danger">الغاء</a>    
       
       </div> 

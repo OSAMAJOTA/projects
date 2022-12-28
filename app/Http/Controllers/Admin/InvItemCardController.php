@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\Inv_itemCard;
 use App\Models\itemcard_cataegories;
 use App\Models\Inv_uom;
+use App\http\Requests\itemcardRequest;
 
 
 class InvItemCardController extends Controller
@@ -53,6 +54,9 @@ class InvItemCardController extends Controller
 
 
         return view('admin.inv_itemCard.create',['inv_itemcard_cataegories'=>$inv_itemcard_cataegories,'inv_uom_parent'=>$inv_uom_parent,'inv_uom_child'=>$inv_uom_child]);
+
+    }
+    public function store(itemcardRequest $request ){
 
     }
 }
