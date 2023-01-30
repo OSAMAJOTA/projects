@@ -59,8 +59,8 @@
           <label>  حالة التفعيل</label>
           <select name="active" id="active" class="form-control">
            <option value="">اختر الحالة</option>
-           <option {{  old('active',$data['active'])==1 ? 'selected' : ''}}   value="1"> نعم</option>
-           <option {{ old('active',$data['active'])==0 ? 'selected' : ''}}  value="0"> لا</option>
+           <option  {{ old('active',$data['active'])==1 ? 'selected' : ''}}  value="1"> نعم</option>
+           <option  {{ old('active',$data['active'])==0 ? 'selected' : ''}} value="0"> لا</option>
           </select>
           @error('is_master')
           <span class="text-danger">{{ $message }}</span>

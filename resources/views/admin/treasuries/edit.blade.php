@@ -43,8 +43,8 @@
           <label> هل رئيسية</label>
           <select name="is_master" id="is_master" class="form-control">
            <option value="">اختر النوع</option>
-           <option  @if(old('is_master')==1) selected="selected"  @endif value="1"> نعم</option>
-           <option @if(old('is_master')==0 and old('is_master')!="")selected="selected"   @endif value="0"> لا</option>
+           <option  {{ old('is_master',$data['is_master'])==1 ? 'selected' : ''}}  value="1"> نعم</option>
+           <option  {{ old('is_master',$data['is_master'])==0 ? 'selected' : ''}} value="0"> لا</option>
         
           </select>
         
@@ -73,22 +73,8 @@
                 <label>  حالة التفعيل</label>
                 <select name="active" id="active" class="form-control">
                  <option value="">اختر الحالة</option>
-                <option 
-
-                @if(old('active')==1) selected="selected"  @endif
-                
-                
-                value="1"> نعم</option>
-                 <option 
-                 
-                 @if(old('active')==0 and old('active')!="" )selected="selected"   @endif
-
-                 
-                 
-                 value="0"> لا</option>
-              
-              
-                </select>
+                 <option  {{ old('active',$data['active'])==1 ? 'selected' : ''}}  value="1"> نعم</option>
+                 <option  {{ old('active',$data['active'])==0 ? 'selected' : ''}} value="0"> لا</option>
               
                 @error('active')
                 <span class="text-danger">{{ $message }}</span>

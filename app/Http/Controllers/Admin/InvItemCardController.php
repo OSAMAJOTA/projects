@@ -114,6 +114,7 @@ if( $data_insert['parent_inv_itemcard_cataegories_id']==""){
 $data_insert['dose_has_retailunit']=$request->dose_has_retailunit;
            if($data_insert['dose_has_retailunit']==1){
             $data_insert['retail_uom_quntToParent']=$request->retail_uom_quntToParent;
+            $data_insert['retail_uom_id']=$request->retail_uom_id;
             $data_insert['price_retail']=$request->price_retail;
             $data_insert['nos_gomla_price_retail']=$request->nos_gomla_price_retail;
             $data_insert['gomla_retail']=$request->gomla_price_retail;
@@ -163,6 +164,30 @@ $data_insert['dose_has_retailunit']=$request->dose_has_retailunit;
             ->with(['error'=>'عفوا حدث خطأ ما'.$ex->getMessage()]);
             }
 
+        }
+
+
+        public function edit($id){
+
+
+            
+            $data=get_cols_where_row(new Inv_itemCard(),array("*"),array("id"=>$id));
+            $com_code=auth()->user()->com_code;
+            $inv_itemcard_cataegories = get_cols_where(new itemcard_cataegories(),array('id','name'),array('com_code'=>$com_code,'active'=>1),'id','DESC');
+            $inv_uom_parent= get_cols_where(new inv_uom(),array('id','name'),array('com_code'=>$com_code,'active'=>1,'is_master'=>1),'id','DESC');
+            $inv_uom_child= get_cols_where(new inv_uom(),array('id','name'),array('com_code'=>$com_code,'active'=>1,'is_master'=>0),'id','DESC');
+            $item_card_data= get_cols_where(new Inv_itemCard(),array('id','name'),array('com_code'=>$com_code,'active'=>1),'id','DESC');
+    
+    
+    
+    
+            return view('admin.inv_itemCard.edit',['data'=>$data,'inv_itemcard_cataegories'=>$inv_itemcard_cataegories,'inv_uom_parent'=>$inv_uom_parent,'inv_uom_child'=>$inv_uom_child,'item_card_data'=>$item_card_data]);
+    
+    
+    
+    
+    
+    
         }
         
      
