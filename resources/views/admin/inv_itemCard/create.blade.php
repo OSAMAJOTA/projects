@@ -86,7 +86,23 @@
       @enderror
       </div>
     </div>
-
+    <div class="col-md-6">
+      <div class="form-group"> 
+        <label>   الصنف الاب له</label>
+        <select name="parent_inv_itemcard_cataegories_id" id="parent_inv_itemcard_cataegories_id" class="form-control ">
+          <option selected value="0"> هو اب</option>
+          @if (@isset($item_card_data) && !@empty($item_card_data))
+         @foreach ($item_card_data as $info )
+           <option @if(old('parent_inv_itemcard_cataegories_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+         @endforeach
+          @endif
+         </select>
+      
+        @error('parent_inv_itemcard_cataegories_id')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+        </div>
+      </div>
     <div class="col-md-6">
       <div class="form-group"> 
         <label>    وحدة قياس الاب</label>
@@ -121,7 +137,7 @@
           @enderror
           </div>
         </div>
-        <div class="col-md-6 "  @if(old('dose_has_retailunit')!=1)style="display:none; @else  style="display:none; @endif  style="display:fixed;" id="retail_uom_idDiv">
+        <div class="col-md-6 "  @if(old('dose_has_retailunit')!=1) style="display:none;"@else   @endif   id="retail_uom_idDiv">
           <div class="form-group"> 
             <label>    وحدة قياس التجزئة الابن بالنسبة (<span class="parentuomname"></span>)</label>
             <select name="retail_uom_id" id="retail_uom_id" class="form-control ">
@@ -138,7 +154,7 @@
             @enderror
             </div>
           </div>
-          <div class="col-md-6 relatied_retial_counter" style="display:none;">
+          <div class="col-md-6 relatied_retial_counter"  @if(old('retail_uom_id')!=1) style="display:none;"@else   @endif>
 
   <div class="form-group">
     <label>   عدد وحدات التجزئة (<span class="chailduomname"></span>)  بالنسبة للاب (<span class="parentuomname"></span>) </label>
@@ -149,7 +165,7 @@
     </div>
   </div>
 
-  <div class="col-md-6 relatied_parent_counter" style="display:none;">
+  <div class="col-md-6 relatied_parent_counter"  @if(old('uom_id')!=1) style="display:none;"@else   @endif>
 
     <div class="form-group">
       <label> السعر القطاعي بوحدة(<span class="parentuomname"></span>) </label>
@@ -160,7 +176,7 @@
       </div>
     </div>
     
-  <div class="col-md-6 relatied_parent_counter" style="display:none;">
+  <div class="col-md-6 relatied_parent_counter"  @if(old('uom_id')!=1) style="display:none;"@else   @endif>
 
     <div class="form-group">
       <label> السعر نص جملة بوحدة(<span class="parentuomname"></span>) </label>
@@ -170,7 +186,7 @@
       @enderror
       </div>
     </div>
-    <div class="col-md-6 relatied_parent_counter" style="display:none;">
+    <div class="col-md-6 relatied_parent_counter"  @if(old('uom_id')!=1) style="display:none;"@else   @endif>
 
       <div class="form-group">
         <label> السعر  جملة بوحدة(<span class="parentuomname"></span>) </label>
@@ -180,7 +196,7 @@
         @enderror
         </div>
       </div>
-      <div class="col-md-6 relatied_parent_counter" style="display:none;">
+      <div class="col-md-6 relatied_parent_counter"  @if(old('uom_id')!=1) style="display:none;"@else   @endif>
 
         <div class="form-group">
           <label> السعر  تكلفة شراء بوحدة(<span class="parentuomname"></span>) </label>
@@ -191,7 +207,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 relatied_retial_counter" style="display:none;">
+        <div class="col-md-6 relatied_retial_counter" @if(old('retail_uom_id')!=1) style="display:none;"@else   @endif>
 
     <div class="form-group">
       <label> السعر القطاعي بوحدة(<span class="chailduomname"></span>) </label>
@@ -201,7 +217,7 @@
       @enderror
       </div>
     </div>
-    <div class="col-md-6 relatied_retial_counter" style="display:none;">
+    <div class="col-md-6 relatied_retial_counter" @if(old('retail_uom_id')!=1) style="display:none;"@else   @endif>
 
       <div class="form-group">
         <label> السعر النص جملة بوحدة(<span class="chailduomname"></span>) </label>
@@ -211,18 +227,18 @@
         @enderror
         </div>
       </div>
-      <div class="col-md-6 relatied_retial_counter" style="display:none;">
+      <div class="col-md-6 relatied_retial_counter" @if(old('retail_uom_id')!=1) style="display:none;"@else   @endif>
 
         <div class="form-group">
           <label> السعر الجملة بوحدة(<span class="chailduomname"></span>) </label>
-          <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="nos_gomla_retail" id="nos_gomla_retail" class="form-control"  value="{{ old('nos_gomla_retail') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
-          @error('nos_gomla_retail')
+          <input oninput="this.value=this.value.replace(/[^0-9.]/g,'');" name="gomla_price_retail" id="gomla_price_retail" class="form-control"  value="{{ old('gomla_price_retail') }}" placeholder="ادخل  السعر" oninvalid="setCustomValidity('من فضلك ادخل هذا الحقل')" onchange="try{setCustomValidity('')}catch(e){}"  >
+          @error('gomla_price_retail')
           <span class="text-danger">{{ $message }}</span>
           @enderror
           </div>
         </div>
 
-        <div class="col-md-6 relatied_retial_counter" style="display:none;">
+        <div class="col-md-6 relatied_retial_counter" @if(old('retail_uom_id')!=1) style="display:none;"@else   @endif>
 
           <div class="form-group">
             <label> السعر الشراء بوحدة(<span class="chailduomname"></span>) </label>
@@ -259,7 +275,6 @@
         <option   @if(old('active')==1) selected="selected"  @endif value="1"> نعم</option>
          <option @if(old('active')==0 and old('active')!="" ) selected="selected"   @endif value="0"> لا</option>
       
-      
         </select>
       
         @error('active')
@@ -282,7 +297,7 @@
         </div>
       <div class="col-md-12">
       <div class="form-group text-center">
-        <button type="submit" id="do_add_item_cardd" class="btn btn-primary btn-sm"> اضافة</button>
+        <button type="submit" id="do_add_item_card" class="btn btn-primary btn-sm"> اضافة</button>
         <a href="{{ route('admin.stores.index') }}" class="btn btn-sm btn-danger">الغاء</a>    
       
       </div> 

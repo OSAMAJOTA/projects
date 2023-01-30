@@ -43,8 +43,8 @@ class itemcardRequest extends FormRequest
         'item_type.required'=>'نوع  الصنف  مطلوب',
         'inv_itemcard_cataegories_id.required'=>'فئة  الصنف  مطلوب',
         'uom_id.required'=>'الوحدة الاساسية  للصنف  مطلوبة',
-        'dose_has_retailunit.required'=>'   حالة هل للصنف وحدة تجزئة ' ,
-        'retail_uom_id.required'=>'   حالة هل للصنف وحدة تجزئة ' ,
+        'dose_has_retailunit.required'=>'حالة هل للصنف وحدة تجزئة ' ,
+        'retail_uom_id.required_if'=>'وحدة التجزئة مطلوبة' ,
         ];
     }
 }

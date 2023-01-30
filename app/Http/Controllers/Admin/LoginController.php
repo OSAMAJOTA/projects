@@ -33,15 +33,15 @@ class LoginController extends Controller
 
 
 
-/*
+/*php artisan tinker
 
 function make_new_admin(){
 $admin=new App\Models\Admin();
-$admin->name='ibrahem';
+$admin->name='ahmed';
 $admin->email='test@gmail.com';
-$admin->username='ibrahem';
+$admin->username='12345';
 $admin->password=bcrypt("admin");
-$admin->com_code=2;
+$admin->com_code=5;
 $admin->save();
 
 }

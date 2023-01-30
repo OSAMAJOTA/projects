@@ -27,12 +27,22 @@ function get_cols_where_p($model, $columns_names = array(), $where = array(), $o
   return $data;
 }
 
-/*get some cols table */
+/*get some cols_row table */
 function get_cols_where_row($model, $columns_names = array(), $where = array())
 {
   $data = $model::select($columns_names)->where($where)->first();
   return $data;
 }
+
+
+/*get some cols_row for  table order by */
+function get_cols_where_row_orderby($model, $columns_names = array(), $where = array(),$order_field,$order_type)
+{
+  $data = $model::select($columns_names)->where($where)->orderby($order_field, $order_type)->first();
+  return $data;
+}
+
+
 
 /*get some cols table */
 function insert($model, $arrayToInsert=array())
